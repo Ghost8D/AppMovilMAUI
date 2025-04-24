@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App.Views.NuevoEmpleadoPage"
+             Title="Nuevo Empleado">
+    
+    <VerticalStackLayout Padding="10" Spacing="10">
+
+        <Picker Title="Seleccionar cargo" 
+                ItemsSource="{Binding Cargos}" 
+                ItemDisplayBinding="{Binding Nombre}"
+                x:Name="cargoPicker"/>
+
+        <Entry Placeholder="ID"
+                x:Name="IDEntry"/>
+
+        <Entry Placeholder="Nombre completo"
+               x:Name="nombreEntry"/>
+        
+        <DatePicker x:Name="fechaInicioPicker"/>
+        
+        <Entry Placeholder="Salario"
+               x:Name="salarioEntry" 
+               Keyboard="Numeric" />
+
+        <Button Text="Guardar"
+                x:Name="guardarButton"
+                Clicked="guardarButton_Clicked"/>       
+
+    </VerticalStackLayout>
+    
+</ContentPage>
