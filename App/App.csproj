@@ -60,25 +60,40 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="FirebaseAuthentication.net" Version="4.1.0" />
 		<PackageReference Include="FirebaseDatabase.net" Version="5.0.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\MainPage.xaml">
+	  <MauiXaml Update="Views\Cliente\MenuCliente.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\NuevoEmpleadoPage.xaml">
+	  <MauiXaml Update="Views\Cliente\VerClientePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\VerEmpleadoPage.xaml">
+	  <MauiXaml Update="Views\Empleados\MainPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Empleados\NuevoEmpleadoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Empleados\VerEmpleadoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Login.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Cliente\NuevoClientePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Views\Empleados\" />
+	  <Compile Update="Views\Login.xaml.cs">
+	    <DependentUpon>Login.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

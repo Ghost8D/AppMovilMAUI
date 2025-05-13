@@ -4,8 +4,6 @@
              x:Class="App.Views.MainPage"
              Title="Menu Principal">
 
-
-
     <ScrollView>
         <Grid Padding="10" RowSpacing="10" ColumnSpacing="5">
             

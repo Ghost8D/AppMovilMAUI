@@ -1,4 +1,5 @@
 ﻿using App.Views;
+using App.Views.Cliente;
 
 namespace App
 {
@@ -10,6 +11,9 @@ namespace App
             //Rutas de Accesso
             Routing.RegisterRoute(nameof(NuevoEmpleadoPage), typeof(NuevoEmpleadoPage));
             Routing.RegisterRoute(nameof(VerEmpleadoPage), typeof(VerEmpleadoPage));
+
+            Routing.RegisterRoute("NuevoClientePage", typeof(NuevoClientePage));
+            Routing.RegisterRoute("VerClientePage", typeof(VerClientePage));
         }
     }
 }

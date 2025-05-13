@@ -4,12 +4,22 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:App.Views"
+    xmlns:cliente="clr-namespace:App.Views.Cliente"
     Shell.FlyoutBehavior="Flyout"
     Title="App">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <FlyoutItem Title="Empleados">
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Clientes">
+        <ShellContent
+            Title="Menú Cliente"
+            ContentTemplate="{DataTemplate cliente:MenuCliente}"
+            Route="MenuCliente" />
+    </FlyoutItem>
 
 </Shell>

@@ -1,50 +1,46 @@
-using Firebase.Database;
 using App.Models;
+using Firebase.Database;
 using System.Collections.ObjectModel;
-using LiteDB;
-using System.Threading.Tasks;
 
-namespace App.Views;
+namespace App.Views.Cliente;
 
-public partial class MainPage : ContentPage
+public partial class MenuCliente : ContentPage
 {
 
-	FirebaseClient client = new FirebaseClient("https://crud-29968-default-rtdb.firebaseio.com/");
-	public ObservableCollection<Empleado> Lista { get; set; } = new ObservableCollection<Empleado>();
+    FirebaseClient client = new FirebaseClient("https://crud-29968-default-rtdb.firebaseio.com/");
+    public ObservableCollection<Clientes> Lista { get; set; } = new ObservableCollection<Clientes>();
 
-
-    public MainPage()
+    public MenuCliente()
 	{
 		InitializeComponent();
-		BindingContext = this;
-	}
+        BindingContext = this;
+    }
 
     public void CargarLista()
     {
-        client.Child("Empleados")
-              .OnceAsync<Empleado>()
+        client.Child("Clientes")
+              .OnceAsync<Clientes>()
               .ContinueWith(task =>
               {
-                  var empleadosFirebase = task.Result;
+                  var clientesFirebase = task.Result;
 
                   MainThread.BeginInvokeOnMainThread(() =>
                   {
                       Lista.Clear();
-                      foreach (var emp in empleadosFirebase)
+                      foreach (var cli in clientesFirebase)
                       {
-                          emp.Object.ID = emp.Key; 
-                          Lista.Add(emp.Object);
+                          cli.Object.ID = cli.Key;
+                          Lista.Add(cli.Object);
                       }
                       listaCollection.ItemsSource = Lista;
                   });
               });
     }
 
-
     private async void nuevoButton_Clicked(object sender, EventArgs e)
-	{
-		await Shell.Current.GoToAsync(nameof(NuevoEmpleadoPage));
-	}
+    {
+        await Shell.Current.GoToAsync(nameof(NuevoClientePage));
+    }
 
     private void filtroEntry_TextChanged(object sender, TextChangedEventArgs e)
     {
@@ -61,19 +57,17 @@ public partial class MainPage : ContentPage
 
     private async void listaCollection_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        Empleado empleado = e.CurrentSelection.FirstOrDefault() as Empleado;
+        Clientes empleado = e.CurrentSelection.FirstOrDefault() as Clientes;
         var parametro = new Dictionary<string, object>
         {
             ["Detalle"] = empleado
         };
-        await Shell.Current.GoToAsync (nameof(VerEmpleadoPage), parametro);
+        await Shell.Current.GoToAsync(nameof(VerClientePage), parametro);
 
     }
-
     protected override void OnAppearing()
     {
         base.OnAppearing();
         CargarLista();
     }
-
 }

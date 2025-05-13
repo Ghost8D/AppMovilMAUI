@@ -35,6 +35,14 @@ namespace App
                 client.Child("Cargos").PostAsync(new Cargo { Nombre = "Supervisor" });
                 client.Child("Cargos").PostAsync(new Cargo { Nombre = "Dependiente" });
             }
+
+            var tipos = client.Child("Tipos").OnceAsync<TipoCliente>();
+            if (tipos.Result.Count == 0 )
+            {
+                client.Child("Tipos").PostAsync(new TipoCliente { NombreTipo = "Empresa" });
+                client.Child("Tipos").PostAsync(new TipoCliente { NombreTipo = "Tiendas" });
+                client.Child("Tipos").PostAsync(new TipoCliente { NombreTipo = "Persona" });
+            }
         }
     }
 }
